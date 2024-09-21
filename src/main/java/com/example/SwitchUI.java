@@ -3,6 +3,7 @@ package com.example;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class SwitchUI extends JFrame {
@@ -55,7 +56,6 @@ public class SwitchUI extends JFrame {
     }
     
     public void addCuadroMagico(int size){
-        
         CuadroMagico cuadroMagico = new CuadroMagico();
 
         JPanel panel = new JPanel(new GridBagLayout());
@@ -90,8 +90,85 @@ public class SwitchUI extends JFrame {
         gbc.gridy = 6;
         
         panel.add(validateButton, gbc);
-
-        // CuadroMagico cuadroMagico = new CuadroMagico()
         tabPanel.addTab("Cuadro Magico", panel);
+    }
+    
+    public void addMatrixCalculator(){
+        JPanel matrixPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        JLabel label = new JLabel("Ejercicio 9");
+        
+        ArrayList<JTextField> textFieldList = new ArrayList<>();
+
+        JTextField a1 = new JTextField(8);
+        textFieldList.add(a1);
+        
+        JTextField a2 = new JTextField(8);
+        textFieldList.add(a2);
+
+        JTextField a3 = new JTextField(8);
+        textFieldList.add(a3);
+
+        JTextField a4 = new JTextField(8);
+        textFieldList.add(a4);
+
+        JTextField b1 = new JTextField(8);
+        textFieldList.add(b1);
+        
+        JTextField b2 = new JTextField(8);
+        textFieldList.add(b2);
+        
+        JTextField b3 = new JTextField(8);
+        textFieldList.add(b3);
+        
+        JTextField b4 = new JTextField(8);
+        textFieldList.add(b4);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
+        matrixPanel.add(label, gbc);
+
+        gbc.gridy = 1;
+        gbc.gridx = 0;
+        matrixPanel.add(a1, gbc);
+        gbc.gridx = 1;
+        matrixPanel.add(a2, gbc);
+        gbc.gridx = 2;
+        matrixPanel.add(a3, gbc);
+        gbc.gridx = 3;
+        matrixPanel.add(a4, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        
+        matrixPanel.add(b1, gbc);
+        
+        gbc.gridx = 1;
+        matrixPanel.add(b2, gbc);
+        gbc.gridx = 2;
+        matrixPanel.add(b3, gbc);
+        gbc.gridx = 3;
+        matrixPanel.add(b4, gbc);
+        
+        JLabel resultLabel = new JLabel();
+        gbc.gridy = 4;
+        gbc.gridx = 0;
+        matrixPanel.add(resultLabel, gbc);
+        
+        gbc.gridy = 3;
+        gbc.gridx = 0;
+
+        JButton runButton = new JButton("Calcular");
+        runButton.addActionListener(new MatrixButtonListener(textFieldList, resultLabel));
+        matrixPanel.add(runButton, gbc);
+        
+        tabPanel.addTab("Ejercicio 9", matrixPanel);
+    }
+    
+    public void addMatrixDiagonal(){
+
+        tabPanel.addTab("Ejercicio 10", rootPane);
     }
 }
